@@ -34,6 +34,28 @@ child.addEventListener("click", (e) => {
 //.stopPropagation() stop events
 // use ONCE to add an event once
 
+
+function createPost(post) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      posts.push(post);
+      const error = false;
+
+      if (!error) {
+        resolve();
+      } else {
+        reject("error something went wrong");
+      }
+    }, 2000);
+  });
+}
+
+createPost([
+  { title: "post three", body: "this is post three" },
+  getPosts,
+]).then(getPosts);
+
+
 const divs = document.querySelectorAll("div");
 
 divs.forEach((diiv) => {
